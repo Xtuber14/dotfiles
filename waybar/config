@@ -1,23 +1,16 @@
 {
   "modules-left": ["sway/workspaces"],
   "modules-center": ["sway/window"],
-  "modules-right": ["cpu", "battery", "clock"],
+  "modules-right": ["cpu", "pulseaudio", "clock", "battery"],
 
   "sway/workspaces": {
       "all-outputs": true,
       "disable-scroll": false,
       "format": "{icon}",
       "format-icons": {
-          "1": "1",
-          "2": "2",
-          "3": "3",
-          "4": "4",
-          "5": "5",
-          "6": "6",
-          "7": "7",
-          "8": "8",
-          "9": "9",
-          "10": "10"
+          "default": "○",
+          "focused": "●",
+          "urgent": "!"
       }
   },
 
@@ -27,17 +20,28 @@
       "max-length": 10
   },
 
+  "pulseaudio": {
+      "format": "{icon} {volume}%",
+      "format-muted": "🔇",
+      "format-icons": {
+          "default": ["", "", ""]
+      },
+      "on-click": "alacritty -e 'pulsemixer'",
+      "scroll-step": 5
+  },
+
+  "clock": {
+      "interval": 60,
+      "format": "{:%H:%M}" // Shows only Hours and Minutes
+  },
+
   "battery": {
       "states": {
           "warning": 30,
           "critical": 15
       },
-      "format": "{capacity}%",
-      "format-charging": "⚡ {capacity}%"
-  },
-
-  "clock": {
-      "interval": 60,
-      "format": "{:%Y-%m-%d %H:%M}"
+      "format": "{icon} {capacity}%",
+      "format-charging": "⚡ {capacity}%",
+      "format-icons": ["", "", "", "", ""]
   }
 }
