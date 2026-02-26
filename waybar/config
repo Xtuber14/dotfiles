@@ -1,7 +1,7 @@
 {
   "modules-left": ["sway/workspaces"],
   "modules-center": ["sway/window"],
-  "modules-right": ["cpu", "pulseaudio", "clock", "battery"],
+  "modules-right": ["cpu", "pulseaudio", "custom/fcitx5", "clock", "battery"],
 
   "sway/workspaces": {
       "all-outputs": true,
@@ -30,9 +30,16 @@
       "scroll-step": 5
   },
 
+  "custom/fcitx5": {
+      "exec": "~/.config/waybar/fcitx5-status.sh",
+      "interval": 2,
+      "format": "  {}",
+      "tooltip": false
+  },
+
   "clock": {
       "interval": 60,
-      "format": "{:%H:%M}" // Shows only Hours and Minutes
+      "format": "{:%H:%M}"
   },
 
   "battery": {

@@ -39,9 +39,17 @@ exec swayidle -w \
           timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
           before-sleep 'swaylock -f -c 000000'
 
+exec --no-startup-id dbus-update-activation-environment --all
 exec waybar
+exec fcitx5 -d #FCITX FOR JAPANESE
+exec mako & #Notification Daemon
+#Wallpaper
 exec swaybg -i /home/xtuber/Wallpapers/1.jpg -m fill
-
+#Portals
+exec /usr/libexec/xdg-desktop-portal-gtk -r
+exec /usr/libexec/xdg-desktop-portal-wlr -r 
+exec /usr/libexec/flatpak-portal -r
+exec "sh -c 'sleep 5;exec /usr/libexec/xdg-desktop-portal -r'"
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
@@ -89,6 +97,10 @@ exec swaybg -i /home/xtuber/Wallpapers/1.jpg -m fill
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+
+	#Flameshot
+	bindsym $mod+Shift+s exec flameshot gui
+	
 #
 # Moving around:
 #
@@ -255,6 +267,8 @@ for_window [title = "Informazioni su Mozilla Firefox"] floating enable
 for_window [title = "Firefox - Sharing Indicator"] kill
 for_window [title = "Firefox — Sharing Indicator"] kill
 
+#Steam
+for_window [title = "Friends List"] floating enable
 #borders
 # No borders on tiled windows
 default_border none
